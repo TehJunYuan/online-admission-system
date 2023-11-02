@@ -1,0 +1,1 @@
+<img src="/assets/images/suc-logo.png" alt="Southern UC logo" {{ $attributes }}>
