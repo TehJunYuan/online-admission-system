@@ -51,8 +51,8 @@ class ApprovedController extends Controller
             'status' => 'Status : Payment Verified by AFO',
         ];
         
-        $sendEmail = array('pt0015@sc.edu.my');
-        $ccEmail = array('pt0015@sc.edu.my');
+        $sendEmail = array('b230085a@sc.edu.my');
+        $ccEmail = array('b230085a@sc.edu.my');
 
         //send email (you can change the email depends on the department needed)
         Mail::to($sendEmail)->cc($ccEmail)->send(new ApprovedEmail($data));
@@ -101,8 +101,8 @@ class ApprovedController extends Controller
             'status' => 'Status : Application Detail checked, promotion and programmed proposed by SRO. Please check at the remark.',
         ];
         
-        $sendEmail = array('pt0015@sc.edu.my');
-        $ccEmail = array('pt0015@sc.edu.my');
+        $sendEmail = array('b230085a@sc.edu.my');
+        $ccEmail = array('b230085a@sc.edu.my');
 
         //send email (you can change the email depends on the department needed)
         Mail::to($sendEmail)->cc($ccEmail)->send(new ApprovedEmail($data));
@@ -152,8 +152,8 @@ class ApprovedController extends Controller
         ];
         
         // $user_Email -> $get_user_details->email;
-        $sendEmail = array('pt0015@sc.edu.my','pt0015@sc.edu.my');
-        $ccEmail = array('pt0015@sc.edu.my');
+        $sendEmail = array('b230085a@sc.edu.my','junyuan741@gmail.com');
+        $ccEmail = array('b230085a@sc.edu.my');
 
         //send email (you can change the email depends on the department needed)
         Mail::to($sendEmail)->cc($ccEmail)->send(new ApprovedEmail($data));

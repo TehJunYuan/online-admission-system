@@ -50,8 +50,8 @@ class RejectController extends Controller
         ];
         
         $user_email = $get_user_details->email;
-        $sendEmail = array('p0015@sc.edu.my');
-        $ccEmail = array('p0015@sc.edu.my','p0015@sc.edu.my');
+        $sendEmail = array('b230085a@sc.edu.my');
+        $ccEmail = array('b230085a@sc.edu.my','b230085a@sc.edu.my');
 
         //send email (you can change the email depends on the department needed)
         Mail::to($sendEmail)->cc($ccEmail)->send(new RejectedEmail($data));
@@ -96,8 +96,8 @@ class RejectController extends Controller
         ];
         
         $user_email = $get_user_details->email;
-        $sendEmail = array('p0015@sc.edu.my');
-        $ccEmail = array('p0015@sc.edu.my');
+        $sendEmail = array('b230085a@sc.edu.my');
+        $ccEmail = array('b230085a@sc.edu.my');
 
         //send email (you can change the email depends on the department needed)
         Mail::to($sendEmail)->cc($ccEmail)->send(new RejectedEmail($data));
@@ -142,8 +142,8 @@ class RejectController extends Controller
         ];
         
         $user_email = $get_user_details->email;
-        $sendEmail = array('p0015@sc.edu.my');
-        $ccEmail = array('p0015@sc.edu.my','p0015@sc.edu.my');
+        $sendEmail = array('b230085a@sc.edu.my');
+        $ccEmail = array('b230085a@sc.edu.my','b230085a@sc.edu.my');
 
         //send email (you can change the email depends on the department needed)
         Mail::to($sendEmail)->cc($ccEmail)->send(new RejectedEmail($data));

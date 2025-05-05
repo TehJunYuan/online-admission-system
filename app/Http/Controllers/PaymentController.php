@@ -17,6 +17,7 @@ use App\Models\ApplicationStatusLog;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\SupportingDocumentCrud;
 use Illuminate\Support\Facades\Storage;
+use App\Models\CmsApplicantDetail;
 
 class PaymentController extends Controller
 {
@@ -58,8 +59,8 @@ class PaymentController extends Controller
         $DECRYPTED_RECORD_ID->setDecryptedId($id);
         $APPLICATION_RECORD_ID = $DECRYPTED_RECORD_ID->getDecryptedId();
 
-        (new DataFlowController)->index(Crypt::encrypt($APPLICATION_RECORD_ID));
-        
+        // (new DataFlowController)->index(Crypt::encrypt($APPLICATION_RECORD_ID));
+
         $getApplicationStatusLog = 
             ApplicationStatusLog::where('user_id', Auth::id())
                 ->where('application_record_id',$APPLICATION_RECORD_ID)
@@ -69,6 +70,19 @@ class PaymentController extends Controller
             ApplicationRecord::select('applicant_profile_id')
                 ->where('id', $APPLICATION_RECORD_ID)
                 ->first();
+
+        $get_cms_applicant_detail_id = CmsApplicantDetail::insertGetId([
+            'application_record_id' => $APPLICATION_RECORD_ID,
+            'tempCode' => 123,
+        ]);
+        
+        CandidateProfile::create([
+            'user_id' => Auth::user()->id,
+            'application_record_id' => $APPLICATION_RECORD_ID,
+            'applicant_profile_id' => $getApplicantProfileId->applicant_profile_id,
+            'cms_applicant_detail_id' => $get_cms_applicant_detail_id,
+            'candidate_profile_status_id' => config('constants.CANDIDATE_PROFILE_STATUS.COMPLETE_SUBMIT_PAYMENT'),
+        ]);
 
         if ($getApplicationStatusLog->application_status_id != config('constants.APPLICATION_STATUS_CODE.COMPLETE_SUPPORTING_DOCUEMENT'))
         {
@@ -117,7 +131,8 @@ class PaymentController extends Controller
         
         $getApplicationStatusLog->application_status_id = config('constants.APPLICATION_STATUS_CODE.COMPLETE_PAYMENT');
         $getApplicationStatusLog->save();
-        
+
+
         return redirect()->route('stu.dashboard');
     }
 

@@ -463,8 +463,8 @@ class DataFlowController extends Controller
             'status' => 'Status : New Application',
         ];
         
-        $sendEmail = array('cco@sc.edu.my');
-        $ccEmail = array('cco@sc.edu.my','cco@sc.edu.my');
+        $sendEmail = array('b230085a@sc.edu.my');
+        $ccEmail = array('b230085a@sc.edu.my','b230085a@sc.edu.my');
 
         //send email (you can change the email depends on the department needed)
         Mail::to($sendEmail)->cc($ccEmail)->send(new SubmitEmail($data));

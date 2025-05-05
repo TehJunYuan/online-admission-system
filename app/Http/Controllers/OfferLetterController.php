@@ -67,7 +67,7 @@ class OfferLetterController extends Controller
         $r = request();
 
         $getOfferLetterFolder=$r->file('offerLetter');        
-        $getOfferLetterFolder->move('storage\images\offerLetter\tmp',$getOfferLetterFolder->getClientOriginalName());   //images is the location                
+        $getOfferLetterFolder->move('storage\images\offerLetter\tmp',$getOfferLetterFolder->getClientOriginalName());   //images is the location
         $getOfferLetterFileName=$getOfferLetterFolder->getClientOriginalName(); 
         
         $DECRYPTED_RECORD_ID = new DecryptId();
@@ -80,7 +80,7 @@ class OfferLetterController extends Controller
 
         $temporary_file = 
             Storage::get('/public/images/offerLetter/tmp/'.$getOfferLetterFileName);
-        
+
         Storage::disk('c-drive')
             ->put('offerLetter/'.$getOfferLetterFileName,$temporary_file);
 
